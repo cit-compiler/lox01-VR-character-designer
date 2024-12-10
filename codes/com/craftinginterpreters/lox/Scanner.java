@@ -114,7 +114,7 @@ public class Scanner {
         if (type == null) type = IDENTIFIER;
         addToken(type);
     
-        addToken(IDENTIFIER);
+        //addToken(IDENTIFIER);
     }
     private void number() {
         while (isDigit(peek())) advance();
