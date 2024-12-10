@@ -114,7 +114,7 @@ public class Scanner {
         if (type == null) type = IDENTIFIER;
         addToken(type);
     
-        //addToken(IDENTIFIER);
+        addToken(IDENTIFIER);
     }
     private void number() {
         while (isDigit(peek())) advance();
@@ -129,6 +129,7 @@ public class Scanner {
     
         addToken(NUMBER, Double.parseDouble(source.substring(start, current)));
     }
+
 
 
     private void string() {
