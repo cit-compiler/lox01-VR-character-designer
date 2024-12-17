@@ -4,7 +4,6 @@ class AstPrinter implements Expr.Visitor<String> {
   String print(Expr expr) {
     return expr.accept(this);
   }
-
   @Override
   public String visitBinaryExpr(Expr.Binary expr) {
     return parenthesize(expr.operator.lexeme,
@@ -49,5 +48,4 @@ class AstPrinter implements Expr.Visitor<String> {
 
     System.out.println(new AstPrinter().print(expression));
   }
-
 }
