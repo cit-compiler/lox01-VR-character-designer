@@ -114,7 +114,7 @@ public class Scanner {
         if (type == null) type = IDENTIFIER;
         addToken(type);
     
-        addToken(IDENTIFIER);
+        //addToken(IDENTIFIER);
     }
     private void number() {
         while (isDigit(peek())) advance();
@@ -133,9 +133,20 @@ public class Scanner {
 
 
     private void string() {
+        //while (peek() != '"' && !isAtEnd()) {
+        //  if (peek() == '\n') line++;
+        //  advance();
+        //}
+
         while (peek() != '"' && !isAtEnd()) {
-          if (peek() == '\n') line++;
-          advance();
+            // Check for escaped double quote (\")
+            if (peek() == '\\' && peekNext() == '"') {
+                advance(); // Skip the backslash
+                advance(); // Skip the escaped quote
+            } else {
+                if (peek() == '\n') line++;
+                advance();
+            }
         }
     
         if (isAtEnd()) {
